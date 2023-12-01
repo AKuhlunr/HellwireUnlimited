@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class WeaponMovement : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    
     public Camera cam;
+<<<<<<< HEAD
 
     public float moveSpeed = 10f;
 
@@ -33,5 +32,21 @@ public class WeaponMovement : MonoBehaviour
         rb.rotation = angle;
         rb.MovePosition(movement);
 
+=======
+
+    private void Update()
+    {
+        // Get the mouse position in world coordinates
+        Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        // Calculate the direction from the weapon to the mouse
+        Vector3 direction = mousePosition - transform.position;
+
+        // Calculate the angle in degrees
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // Rotate the weapon relative to the player's rotation
+        transform.rotation = Quaternion.Euler(0, 0, angle-90f);
+>>>>>>> enemies
     }
 }
